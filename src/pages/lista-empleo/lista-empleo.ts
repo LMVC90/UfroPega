@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import 'rxjs/add/operator/map';
+import {Http} from '@angular/http';
+import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
+
 
 /**
  * Generated class for the ListaEmpleoPage page.
@@ -8,18 +12,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-lista-empleo',
   templateUrl: 'lista-empleo.html',
 })
 export class ListaEmpleoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  information: any[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http  ) {
+
+
+    this._http.get('https://jsonplaceholder.typicode.com/users').map(res => res.json()).subscribe(data => {
+      this.information = data;
+      console.log(this.information);
+  });
+    }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaEmpleoPage');
   }
+
+    verPerfil(){
+      this.navCtrl.push(PerfilEmpleoPage);
+    }
 
 }

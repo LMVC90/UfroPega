@@ -7,12 +7,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>listaEmpleo</ion-title>
+      <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+    <ion-title>Lista de Empleos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
+  
+    <ion-item-group *ngFor="let info of information">
+        <ion-item-divider color="light">Categoría: {{ info.id }}</ion-item-divider>
+        <ion-item (click)="verPerfil()">Empleador: {{ info.name }}</ion-item>
+      </ion-item-group>
+
 
 </ion-content>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -8,18 +10,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  loginData = {};
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+ constructor(public navCtrl: NavController, public navParams: NavParams) {
+   
+ }
+   
+ ionViewDidLoad() {
+   console.log('ionViewDidLoad LoginPage');
+ }
+
+login(){
+  //this.navCtrl.push(ListaEmpleoPage);}
+  this.navCtrl.setRoot(ListaEmpleoPage);
+}
+
+
 
 }

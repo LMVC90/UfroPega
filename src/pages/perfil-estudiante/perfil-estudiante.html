@@ -7,12 +7,71 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>perfilEstudiante</ion-title>
+      <button ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+    <ion-title>Perfil Estudiante</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+
+    <div class="list card">
+
+        <div class="item">
+          <div style="text-align:center">
+            <div style="display:inline-block" ng-click="editarImagen()">
+            <img src="https://images.vexels.com/media/users/3/140748/isolated/preview/5b078a59390bb4666df98b49f1cdedd0-perfil-avatar-masculino-by-vexels.png" class="custom-avatar" style="border-radius: 50%;width: 150px;height: 150px;">
+            </div>
+              <h2 class="ng-binding">Nombre</h2><span class="font-size:10px;color:whitesmoke" ng-show="cliente.reputacion===0">
+            Sin calificación
+          </span>
+            <span class="ion-android-star" style="color:darkgoldenrod;" ng-repeat="n in reputacionArr(cliente.reputacion)" ng-show="cliente.reputacion>0"></span>
+          </div>
+      
+        </div>
+      
+        <div class="item item-body">
+      
+          <label class="item item-input item-stacked-label">
+                  <span class="input-label">Dirección</span>
+                  <br>
+                      Lautaro #985
+          </label> <br>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Región</span>
+            <br>
+                      Araucanía
+          </label> <br>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Comuna</span>
+            <br>
+                      Cautín
+          </label>
+            <br>
+
+            <ion-card>
+
+                <ion-card-header>
+                    Información extra:
+                </ion-card-header>
+              
+                <ion-card-content>
+                    Estudiante de Ingeniería Informática del 4 año, he trabajao en proyectos .....
+                </ion-card-content>
+              
+              </ion-card>
+            <br>
+
+            <label style="padding-top:15px">
+                <button ion-button full style="border: 0;border-radius: 45px;color: blue"><p style="color: white">Editar</p></button> <!--ng-click="irEditarPerfilEmple()-->
+              </label>
+               
+        </div>
+      
+      </div>
 
 </ion-content>
