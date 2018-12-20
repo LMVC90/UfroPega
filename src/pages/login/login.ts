@@ -16,7 +16,7 @@ import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+//login data
   loginData = {};
 
  constructor(public navCtrl: NavController, public navParams: NavParams) {
