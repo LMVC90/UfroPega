@@ -5,6 +5,7 @@ import {Http} from '@angular/http';
 import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
 
 
+
 /**
  * Generated class for the ListaEmpleoPage page.
  *
@@ -24,7 +25,7 @@ export class ListaEmpleoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http  ) {
 
 
-    this._http.get('https://jsonplaceholder.typicode.com/users').map(res => res.json()).subscribe(data => {
+    this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
       this.information = data;
       console.log(this.information);
   });

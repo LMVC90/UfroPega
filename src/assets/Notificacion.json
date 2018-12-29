@@ -1,0 +1,26 @@
+﻿[
+	{
+		"id_origen": "1",
+		"fecha": "10-Dec-18",
+		"id_destino": "2",
+		"estado": "rechazado"
+	},
+	{
+		"id_origen": "2",
+		"fecha": "15-Dec-18",
+		"id_destino": "1",
+		"estado": "solicitado"
+	},
+	{
+		"id_origen": "3",
+		"fecha": "15-Dec-18",
+		"id_destino": "1",
+		"estado": "solicitado"
+	},
+	{
+		"id_origen": "2",
+		"fecha": "30-Dec-18",
+		"id_destino": "1",
+		"estado": "solicitado"
+	}
+]

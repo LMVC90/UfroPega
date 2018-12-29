@@ -1,0 +1,30 @@
+﻿[
+	{
+		"Id_oferta": 1,
+		"Nombre": "Tutoria",
+		"Categoria": "Pedagogia",
+		"Monto": "5000",
+		"Comentario": "Clases particulares",
+		"Cupos": "2",
+		"Ubicación": "Temuco"
+	},
+	{
+		"Id_oferta": 2,
+		"Nombre": "Mantencion equipo",
+		"Categoria": "Civil",
+		"Monto": "50000",
+		"Comentario": "Formatear notebooks",
+		"Cupos": "1",
+		"Ubicación": "Temuco"
+	},
+	{
+		"Id_oferta": 3,
+		"Nombre": "Aplicacion web ",
+		"Categoria": "Informatica",
+		"Monto": "300000",
+		"Comentario": "Sistema ERP",
+		"Cupos": "3",
+		"Ubicación": "Temuco"
+	}
+	
+]

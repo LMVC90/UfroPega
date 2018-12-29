@@ -8,19 +8,20 @@ import { PerfilEmpleadorPage } from '../pages/perfil-empleador/perfil-empleador'
 import { PerfilEstudiantePage } from '../pages/perfil-estudiante/perfil-estudiante';
 import { ListaEmpleoPage } from '../pages/lista-empleo/lista-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
+import { RolProvider } from '../providers/rol/rol';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-    @ViewChild(Nav) nav: Nav; //  nav menu
-  
-    rootPage:any = LoginPage;
-  
-    pages: Array<{title: string, component: any}>; 
+  @ViewChild(Nav) nav: Nav; //  nav menu
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
- 
+  rootPage: any = LoginPage;
+
+  pages: Array<{ title: string, component: any }>;
+
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private rol: RolProvider) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -28,12 +29,19 @@ export class MyApp {
       splashScreen.hide();
     });
 
-  this.pages = [
-    { title: 'Perfil Empleador', component: PerfilEmpleadorPage },
-    { title: 'Perfil Estudiante', component: PerfilEstudiantePage },
-    { title: 'Lista de Empleos', component: ListaEmpleoPage },
-    { title: 'Notificaciones', component: NotificacionPage }
-  ];
+    if (this.rol.getRol()) {
+      this.pages = [
+        { title: 'Perfil Estudiante', component: PerfilEstudiantePage },
+        { title: 'Lista de Empleos', component: ListaEmpleoPage },
+        { title: 'Notificaciones', component: NotificacionPage }
+      ];
+    }
+    else {
+      this.pages = [
+        { title: 'Perfil Empleador', component: PerfilEmpleadorPage },
+        { title: 'Notificaciones', component: NotificacionPage }
+      ]
+    }
 
   }
 

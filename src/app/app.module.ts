@@ -13,6 +13,9 @@ import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario'
 import { HttpModule } from '@angular/http';
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
+import { RolProvider } from '../providers/rol/rol';
+import {HttpClientModule} from '@angular/common/http';
+
 
 
 
@@ -31,7 +34,8 @@ import { NotificacionPage } from '../pages/notificacion/notificacion';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule 
+    HttpModule,
+    HttpClientModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +51,9 @@ import { NotificacionPage } from '../pages/notificacion/notificacion';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    RolProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    
   ]
 })
 export class AppModule {}
