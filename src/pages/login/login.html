@@ -6,11 +6,14 @@
 -->
 <ion-content padding>
   <img src="../../assets/imgs/ufropega.png" style="margin-left: 20%;margin-right: 20%;width: 60%;">
-  <form #form="ngForm" (ngSubmit)="(form.value)" novalidate>
+  <form #signInForm="ngForm" (submit)="login()">
+  <!--<form #form="ngForm" (ngSubmit)="(form.value)" novalidate>-->
     <ion-list>
       <ion-item  style="border-radius: 20px;">
         <ion-label floating>Correo:</ion-label>
-        <ion-input type="text" name="usu_correo" required></ion-input>
+        <ion-input [(ngModel)]="userModel.email" type="email" autocorrect="off" autocapitalize="none" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                  required></ion-input>
+        <!--<ion-input type="text" name="usu_correo" required></ion-input>-->
       </ion-item>
       <!--                                 [(ngModel)]="user.usu_correo" #usu_correo ="ngModel" ngModel [class.invalid]="usu_correo.errors && usu_correo.dirty"
       <ion-item class="error-message" *ngIf="usu_correo.errors?.required && usu_correo.dirty">
@@ -18,8 +21,9 @@
       </ion-item>-->
 
       <ion-item  style="border-radius: 20px">
-        <ion-label floating>Conrtraseña:</ion-label>
-        <ion-input type="password" name="password"></ion-input>
+        <ion-label floating>Contraseña:</ion-label>
+        <ion-input [(ngModel)]="userModel.password" type="password" name="password" required minlength="6"></ion-input>
+        <!--<ion-input type="password" name="password"></ion-input>-->
       </ion-item>
       <!--                                              [(ngModel)]="user.password" ngModel required #password="ngModel"   [class.invalid]="password.errors && password.dirty"
       <ion-item class="error-message" *ngIf="password.errors?.required && password.dirty">
@@ -27,7 +31,8 @@
       </ion-item> -->
 
       <div padding>
-        <button ion-button block type="submit" (click)="login()" [disabled]="!form.valid" round>Ingresar</button> <!--(click)="onSubmit()"-->
+        <button ion-button [disabled]="!signInForm.form.valid" block>Entrar</button>
+         <!--<button ion-button block type="submit" (click)="login()" [disabled]="!form.valid" round>Ingresar</button>--> <!--(click)="onSubmit()"-->
       </div>
 
       <div padding>

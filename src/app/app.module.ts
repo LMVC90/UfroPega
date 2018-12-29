@@ -4,15 +4,36 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+// Importa módulos de firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// Credenciales y configuración inicial de firebase
+export const firebaseConfig = {
+  apiKey: "AIzaSyB7Tx2zmbmVxaMe-dZqpRAqefnatezs07k",
+    authDomain: "ufropega.firebaseapp.com",
+    databaseURL: "https://ufropega.firebaseio.com",
+    projectId: "ufropega",
+    storageBucket: "ufropega.appspot.com",
+    messagingSenderId: "157704278519"
+};
+
+// Importa páginas
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { PerfilEmpleadorPage } from '../pages/perfil-empleador/perfil-empleador';
 import { PerfilEstudiantePage } from '../pages/perfil-estudiante/perfil-estudiante';
 import { ListaEmpleoPage } from '../pages/lista-empleo/lista-empleo';
 import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario';
-import { HttpModule } from '@angular/http';
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
+import { HttpModule } from '@angular/http';
+
+// Para el inicio de sesion
+
+import { AuthService } from '../providers/auth-service';
+//import { UsuarioPage } from '../pages/usuario/usuario';
 
 
 
@@ -25,13 +46,18 @@ import { NotificacionPage } from '../pages/notificacion/notificacion';
     PerfilEmpleadorPage,
     LoginPage,
     PerfilEmpleoPage,
-    NotificacionPage
+    NotificacionPage,
+    //UsuarioPage,
 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule 
+    HttpModule,
+    // Importa módulos firebase
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,12 +68,15 @@ import { NotificacionPage } from '../pages/notificacion/notificacion';
     PerfilEmpleadorPage,
     LoginPage,
     PerfilEmpleoPage,
-    NotificacionPage
+    NotificacionPage,
+    //UsuarioPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthService,
   ]
 })
 export class AppModule {}
