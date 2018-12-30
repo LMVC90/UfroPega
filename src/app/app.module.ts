@@ -29,6 +29,8 @@ import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario'
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';}
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RolProvider } from '../providers/rol/rol';
 
 // Para el inicio de sesion
 
@@ -54,6 +56,7 @@ import { AuthService } from '../providers/auth-service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+    HttpClientModule,
     // Importa módulos firebase
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -77,6 +80,7 @@ import { AuthService } from '../providers/auth-service';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
+    RolProvider
   ]
 })
 export class AppModule {}
