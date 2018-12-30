@@ -27,19 +27,13 @@ import { PerfilEstudiantePage } from '../pages/perfil-estudiante/perfil-estudian
 import { ListaEmpleoPage } from '../pages/lista-empleo/lista-empleo';
 import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario';
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
-import { NotificacionPage } from '../pages/notificacion/notificacion';
-<<<<<<< HEAD
-import { RolProvider } from '../providers/rol/rol';
-import {HttpClientModule} from '@angular/common/http';
-
-=======
+import { NotificacionPage } from '../pages/notificacion/notificacion';}
 import { HttpModule } from '@angular/http';
 
 // Para el inicio de sesion
 
 import { AuthService } from '../providers/auth-service';
 //import { UsuarioPage } from '../pages/usuario/usuario';
->>>>>>> b03aec1f7a6a519ecf7ad924ead4a9caa69ee2af
 
 
 
@@ -60,14 +54,10 @@ import { AuthService } from '../providers/auth-service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-<<<<<<< HEAD
-    HttpClientModule 
-=======
     // Importa módulos firebase
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
->>>>>>> b03aec1f7a6a519ecf7ad924ead4a9caa69ee2af
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,15 +74,9 @@ import { AuthService } from '../providers/auth-service';
   providers: [
     StatusBar,
     SplashScreen,
-<<<<<<< HEAD
-    RolProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    
-=======
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
->>>>>>> b03aec1f7a6a519ecf7ad924ead4a9caa69ee2af
   ]
 })
 export class AppModule {}
