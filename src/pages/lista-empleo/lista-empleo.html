@@ -17,13 +17,20 @@
 
 
 <ion-content padding>
+    <ion-list class="accordion-list">
 
 
   
-    <ion-item-group *ngFor="let info of information">
-        <ion-item-divider color="light">Categoría: {{ info.Categoria }}</ion-item-divider>
-        <ion-item (click)="verPerfil()">Empleador: {{ info.Nombre }}</ion-item>
-      </ion-item-group>
+    <ion-item-group *ngFor="let info of information; let i = index">
+        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="light">Categoría: {{ info.categoria }}</ion-item-divider>
+        
+      <ion-list *ngIf="info.ofertas && info.open" no-lines>
+          <ion-list-header *ngFor="let oferta of info.ofertas; let j = index" no-padding>
+              <ion-item (click)="verPerfil()">Empleador: {{ oferta.Nombre }}</ion-item>
+          </ion-list-header>
+      </ion-list>
+    </ion-item-group>
+    </ion-list>
 
 
 </ion-content>

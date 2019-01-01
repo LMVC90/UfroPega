@@ -25,7 +25,7 @@ export class ListaEmpleoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http  ) {
 
 
-    this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
+    this._http.get('../../assets/OfertasCat.json').map(res => res.json()).subscribe(data => {
       this.information = data;
       console.log(this.information);
   });
@@ -40,4 +40,7 @@ export class ListaEmpleoPage {
       this.navCtrl.push(PerfilEmpleoPage);
     }
 
+    toggleSection(i) {
+      this.information[i].open = !this.information[i].open;
+    }
 }
