@@ -42,5 +42,13 @@ export class ListaEmpleoPage {
 
     toggleSection(i) {
       this.information[i].open = !this.information[i].open;
+      this.cerrarHermanos(i);
+    }
+    cerrarHermanos(i) {
+      for (var j = 0; j < this.information.length; j++) {
+        if(j != i){
+          this.information[j].open = false;
+        }
+      }
     }
 }

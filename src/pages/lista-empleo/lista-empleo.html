@@ -22,12 +22,15 @@
 
   
     <ion-item-group *ngFor="let info of information; let i = index">
-        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="light">Categoría: {{ info.categoria }}</ion-item-divider>
+        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="#911">Categoría: {{ info.categoria }}
+            <ion-icon item-left name="arrow-dropright" *ngIf="!info.open"></ion-icon>
+            <ion-icon item-left name="arrow-dropdown" *ngIf="info.open"></ion-icon>
+        </ion-item-divider>
         
       <ion-list *ngIf="info.ofertas && info.open" no-lines>
-          <ion-list-header *ngFor="let oferta of info.ofertas; let j = index" no-padding>
+          <ion-item-group *ngFor="let oferta of info.ofertas; let j = index" style="border-bottom: 1px solid #222;" no-padding>
               <ion-item (click)="verPerfil()">Empleador: {{ oferta.Nombre }}</ion-item>
-          </ion-list-header>
+          </ion-item-group>
       </ion-list>
     </ion-item-group>
     </ion-list>
