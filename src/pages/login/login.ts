@@ -3,6 +3,7 @@ import { NavController, NavParams,LoadingController, AlertController } from 'ion
 import { AuthService } from '../../providers/auth-service';
 import { UserModel } from '../../models/user-model';
 import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
+import * as firebase from 'firebase';
 
 
 /**
@@ -35,6 +36,15 @@ export class LoginPage {
  ionViewDidLoad() {
    console.log('ionViewDidLoad LoginPage');
  }
+
+forgot(email){
+  firebase.auth().sendPasswordResetEmail(email).then(data => {
+    console.log("Correcto");
+  }).catch(error => {
+    console.log("Error");
+    this.alert('Error', 'Ha ocurrido un error. Por favor ingrese un correo valido.');
+  });
+}
 
 login(){
   let loading = this.loadingCtrl.create({
