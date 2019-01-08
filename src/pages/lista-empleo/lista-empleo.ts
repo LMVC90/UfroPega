@@ -20,15 +20,30 @@ import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
 })
 export class ListaEmpleoPage {
 
-  information: any[];
+  ofertas: any[];
+  categorias: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http  ) {
 
-
-    this._http.get('../../assets/OfertasCat.json').map(res => res.json()).subscribe(data => {
-      this.information = data;
-      console.log(this.information);
-  });
+/*
+    this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
+      this.ofertas = data;
+      console.log(this.ofertas);
+    });
+    this._http.get('../../assets/Categorias.json').map(res => res.json()).subscribe(data => {
+      this.categorias = data;
+      console.log(this.categorias);
+    });
+*/
+    this._http.get('https://sheetsu.com/apis/v1.0bu/b22af3c25ea7/sheets/ofertas').map(res => res.json()).subscribe(data => {
+      this.ofertas = data;
+      console.log(this.ofertas);
+    });
+    this._http.get('https://sheetsu.com/apis/v1.0bu/b22af3c25ea7/sheets/categorias').map(res => res.json()).subscribe(data => {
+      this.categorias = data;
+      console.log(this.categorias);
+    });
+  
     }
 
 
@@ -41,13 +56,13 @@ export class ListaEmpleoPage {
     }
 
     toggleSection(i) {
-      this.information[i].open = !this.information[i].open;
+      this.categorias[i].open = !this.categorias[i].open;
       this.cerrarHermanos(i);
     }
     cerrarHermanos(i) {
-      for (var j = 0; j < this.information.length; j++) {
+      for (var j = 0; j < this.categorias.length; j++) {
         if(j != i){
-          this.information[j].open = false;
+          this.categorias[j].open = false;
         }
       }
     }

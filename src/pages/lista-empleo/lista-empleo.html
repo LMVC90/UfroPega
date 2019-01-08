@@ -21,15 +21,15 @@
 
 
   
-    <ion-item-group *ngFor="let info of information; let i = index">
-        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="#911">Categoría: {{ info.categoria }}
+    <ion-item-group *ngFor="let info of categorias; let i = index">
+        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="#911">Categoría: {{ info.nombre_cat }}
             <ion-icon item-left name="arrow-dropright" *ngIf="!info.open"></ion-icon>
             <ion-icon item-left name="arrow-dropdown" *ngIf="info.open"></ion-icon>
         </ion-item-divider>
         
-      <ion-list *ngIf="info.ofertas && info.open" no-lines>
-          <ion-item-group *ngFor="let oferta of info.ofertas; let j = index" style="border-bottom: 1px solid #222;" no-padding>
-              <ion-item (click)="verPerfil(oferta)">Empleador: {{ oferta.Nombre }}</ion-item>
+      <ion-list *ngIf="info.open" no-lines>
+          <ion-item-group *ngFor="let oferta of ofertas; let j = index" no-padding>
+              <ion-item *ngIf="oferta.Categoria == info.id_categoria" (click)="verPerfil(oferta)" style="border-bottom: 1px solid #222;">{{ oferta.Nombre }}</ion-item>
           </ion-item-group>
       </ion-list>
     </ion-item-group>
