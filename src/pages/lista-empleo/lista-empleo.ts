@@ -36,8 +36,8 @@ export class ListaEmpleoPage {
     console.log('ionViewDidLoad ListaEmpleoPage');
   }
 
-    verPerfil(){
-      this.navCtrl.push(PerfilEmpleoPage);
+    verPerfil(oferta){
+      this.navCtrl.push(PerfilEmpleoPage, {oferta});
     }
 
     toggleSection(i) {

@@ -15,7 +15,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilEmpleoPage {
 
+  public oferta;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.oferta = navParams.get("oferta");
   }
 
   ionViewDidLoad() {

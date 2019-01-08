@@ -29,7 +29,7 @@
         
       <ion-list *ngIf="info.ofertas && info.open" no-lines>
           <ion-item-group *ngFor="let oferta of info.ofertas; let j = index" style="border-bottom: 1px solid #222;" no-padding>
-              <ion-item (click)="verPerfil()">Empleador: {{ oferta.Nombre }}</ion-item>
+              <ion-item (click)="verPerfil(oferta)">Empleador: {{ oferta.Nombre }}</ion-item>
           </ion-item-group>
       </ion-list>
     </ion-item-group>
