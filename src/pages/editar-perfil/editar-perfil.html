@@ -1,0 +1,66 @@
+<!--
+  Generated template for the EditarPerfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>editar-perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div *ngFor="let item of information">
+        <div class="list card" *ngIf="item.id_usuario == id_user">
+  
+            <div class="item">
+              <div style="text-align:center" ng>
+                <div style="display:inline-block" ng-click="editarImagen()">
+                <img src="https://images.vexels.com/media/users/3/140748/isolated/preview/5b078a59390bb4666df98b49f1cdedd0-perfil-avatar-masculino-by-vexels.png" class="custom-avatar" style="border-radius: 50%;width: 150px;height: 150px;">
+                </div>
+                <ion-item class="ng-binding">
+                    <ion-label color="primary">Nombre</ion-label>
+                    <ion-input [(ngModel)]= "item.nombre" name="{{item.nombre}}" placeholder="{{item.nombre}}"></ion-input>
+                </ion-item>
+                <span class="ion-android-star" style="color:darkgoldenrod;" ng-repeat="n in reputacionArr(cliente.reputacion)" ng-show="cliente.reputacion>0"></span>
+              </div>
+          
+            </div>
+          
+            <div class="item item-body">
+                <ion-item class="ng-binding">
+                  <ion-label color="primary">Region</ion-label>
+                  <ion-input [(ngModel)]= "item.region" name="{{item.region}}" placeholder="{{item.region}}"></ion-input>
+                </ion-item>
+                <ion-item class="ng-binding">
+                  <ion-label color="primary">Comuna</ion-label>
+                  <ion-input [(ngModel)]= "item.comuna" name="{{item.comuna}}" placeholder="{{item.comuna}}"></ion-input>
+                </ion-item>
+                <br>
+    
+                <ion-card>
+  
+                    <ion-card-header>
+                        <ion-label color="primary">Información extra:</ion-label>
+                    </ion-card-header>
+                  
+                    <ion-card-content>
+                        <ion-textarea [(ngModel)]= "item.info_extra" name="{{item.info_extra}}" placeholder="{{item.info_extra}}"></ion-textarea>
+                    </ion-card-content>
+                  
+                  </ion-card>
+                      <br>
+    
+                <label style="padding-top:15px">
+                  <button (click)="updatePerfil(item)" ion-button full style="border: 0;border-radius: 45px;color: blue"><p style="color: white">Guardar</p></button> <!--ng-click="irEditarPerfilEmple()-->
+                </label>
+             
+            </div>
+          
+          </div>
+        </div>
+</ion-content>

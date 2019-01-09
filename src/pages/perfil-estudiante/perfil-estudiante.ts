@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Http} from '@angular/http';
+import { EditarPerfilPage } from '../editar-perfil/editar-perfil';
 
 /**
  * Generated class for the PerfilEstudiantePage page.
@@ -20,7 +21,7 @@ export class PerfilEstudiantePage {
   id:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _http:Http) {
-    this._http.get('../../assets/Usuario.json').map(res => res.json()).subscribe(data => {
+    this._http.get('http://10.10.11.44:83/api/usuario/').map(res => res.json()).subscribe(data => {
       this.information = data;
       console.log(data);
   });
@@ -29,6 +30,10 @@ export class PerfilEstudiantePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilEstudiantePage');
+  }
+
+  editarPerfil(id_usuario) {
+    this.navCtrl.push(EditarPerfilPage, {id_usuario});
   }
 
 }

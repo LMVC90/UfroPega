@@ -24,6 +24,7 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { PerfilEmpleadorPage } from '../pages/perfil-empleador/perfil-empleador';
 import { PerfilEstudiantePage } from '../pages/perfil-estudiante/perfil-estudiante';
+import { EditarPerfilPage } from '../pages/editar-perfil/editar-perfil';
 import { ListaEmpleoPage } from '../pages/lista-empleo/lista-empleo';
 import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario';
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
@@ -33,8 +34,6 @@ import { HttpModule } from '@angular/http';
 // Para el inicio de sesion
 
 import { AuthService } from '../providers/auth-service';
-import { HttpClientModule } from '@angular/common/http';
-import { RolProvider } from '../providers/rol/rol';
 import { StartPage } from '../pages/start/start';
 import { StartEmpleadorPage } from '../pages/start-empleador/start-empleador';
 import { ListaServicioPage } from '../pages/lista-servicio/lista-servicio';
@@ -53,6 +52,7 @@ import { ListaServicioPage } from '../pages/lista-servicio/lista-servicio';
     ListaEmpleoPage,
     PerfilEstudiantePage,
     PerfilEmpleadorPage,
+    EditarPerfilPage,
     LoginPage,
     PerfilEmpleoPage,
     NotificacionPage,
@@ -78,6 +78,7 @@ import { ListaServicioPage } from '../pages/lista-servicio/lista-servicio';
     ListaEmpleoPage,
     PerfilEstudiantePage,
     PerfilEmpleadorPage,
+    EditarPerfilPage,
     LoginPage,
     PerfilEmpleoPage,
     NotificacionPage,
