@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import {Http} from '@angular/http';
 import { AuthService } from '../auth-service';
 import { auth } from 'firebase';
+import { GLOBAL } from '../Global';
+
 
 
 /*
@@ -20,7 +22,7 @@ export class RolProvider {
   id: any;
 
   constructor(public http: HttpClient, private _http: Http, private _auth: AuthService) {
-    this._http.get('../../assets/Usuario.json').map(res => res.json()).subscribe(data => {
+    this._http.get(GLOBAL.url +'usuario').map(res => res.json()).subscribe(data => {
       this.information = data;
       console.log(data);
   });

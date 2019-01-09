@@ -5,6 +5,7 @@ import {Http} from '@angular/http';
 import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
+import { GLOBAL } from '../../providers/Global';
 
 
 @Component({
@@ -28,11 +29,11 @@ export class ListaEmpleoPage {
       console.log(this.categorias);
     });
 */
-    this._http.get('https://sheetsu.com/apis/v1.0bu/b22af3c25ea7/sheets/ofertas').map(res => res.json()).subscribe(data => {
+    this._http.get(GLOBAL.url+'oferta').map(res => res.json()).subscribe(data => {
       this.ofertas = data;
       console.log(this.ofertas);
     });
-    this._http.get('https://sheetsu.com/apis/v1.0bu/b22af3c25ea7/sheets/categorias').map(res => res.json()).subscribe(data => {
+    this._http.get(GLOBAL.url+'categoria').map(res => res.json()).subscribe(data => {
       this.categorias = data;
       console.log(this.categorias);
     });
