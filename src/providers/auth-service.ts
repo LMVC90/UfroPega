@@ -11,10 +11,14 @@ export class AuthService {
         angularFireAuth.authState.subscribe((user: User) => {
             this.user = user;
         });
+        console.log(this.user);
     }
 
     get authenticated(): boolean {
         return this.user != null;
+    }
+    getMail(){
+        return this.user.email;
     }
 
     signInWithEmailAndPassword(userModel: UserModel): Promise<any> {
@@ -27,5 +31,6 @@ export class AuthService {
 
     signOut(): Promise<any> {
         return this.angularFireAuth.auth.signOut();
+
     }
 }

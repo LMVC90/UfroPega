@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { RolProvider } from '../../providers/rol/rol';
 
 /**
  * Generated class for the PerfilEmpleoPage page.
@@ -15,7 +16,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilEmpleoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  datos: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _usu: RolProvider) {
+   
   }
 
   ionViewDidLoad() {

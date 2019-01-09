@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { UserModel } from '../../models/user-model';
+//import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
+import { RolProvider } from '../../providers/rol/rol';
+import { PerfilEmpleadorPage } from '../perfil-empleador/perfil-empleador';
 import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
+import { StartPage } from '../start/start';
+import { StartEmpleadorPage } from '../start-empleador/start-empleador';
+
 
 
 /**
@@ -28,28 +34,29 @@ export class LoginPage {
    public navParams: NavParams,
    public loadingCtrl: LoadingController,
    public alertCtrl: AlertController,
-   public authService: AuthService) {
-   this.userModel = new UserModel();   
+   public authService: AuthService,
+   private _rol: RolProvider) {
+   this.userModel = new UserModel();
+   //this._rol.cleanRol();
  }
-   
- ionViewDidLoad() {
-   console.log('ionViewDidLoad LoginPage');
- }
+  
 
 login(){
+  
   let loading = this.loadingCtrl.create({
     content: 'Iniciando sesión. Por favor, espere...'
     });
     loading.present();    
 
 this.authService.signInWithEmailAndPassword(this.userModel).then(result => {
+  localStorage.setItem('email',this.userModel.email);
     loading.dismiss();
-    this.navCtrl.setRoot(ListaEmpleoPage);
+    this.verifRol();
 }).catch(error => {
     loading.dismiss();
 
     console.log(error);
-    this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+    this.alert('Ups!', 'Usuario o Contraseña incorrectos');
 });
 
   //this.navCtrl.push(ListaEmpleoPage);}
@@ -66,5 +73,16 @@ alert(title: string, message: string) {
   });
   alert.present();
 }
+
+
+//
+verifRol(){
+  if(this._rol.getRol() == 'empleador'){
+      this.navCtrl.setRoot(StartEmpleadorPage);
+  }else{
+    this.navCtrl.setRoot(StartPage);
+  }
+}
+
 
 }

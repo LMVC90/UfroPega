@@ -3,15 +3,11 @@ import { NavController, NavParams } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import {Http} from '@angular/http';
 import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
+import { AuthService } from '../../providers/auth-service';
+import { LoginPage } from '../login/login';
 
 
 
-/**
- * Generated class for the ListaEmpleoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 
 @Component({
@@ -22,8 +18,9 @@ export class ListaEmpleoPage {
 
   information: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http  ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http, private _auth: AuthService ) {
 
+    
 
     this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
       this.information = data;
@@ -31,13 +28,15 @@ export class ListaEmpleoPage {
   });
     }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListaEmpleoPage');
-  }
-
     verPerfil(){
       this.navCtrl.push(PerfilEmpleoPage);
     }
+
+    logOut(){
+      this._auth.signOut();
+      localStorage.removeItem('email');
+      this.navCtrl.setRoot(LoginPage);
+    }
+
 
 }

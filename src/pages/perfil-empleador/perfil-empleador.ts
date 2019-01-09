@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { RolProvider } from '../../providers/rol/rol';
+import 'rxjs/add/operator/map';
+import {Http} from '@angular/http';
 
 /**
  * Generated class for the PerfilEmpleadorPage page.
@@ -15,7 +18,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilEmpleadorPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  information: any;
+  id:any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _http:Http) {
+    this._http.get('../../assets/Usuario.json').map(res => res.json()).subscribe(data => {
+      this.information = data;
+      console.log(data);
+  });
+  this.id=localStorage.getItem("id");
   }
 
   ionViewDidLoad() {

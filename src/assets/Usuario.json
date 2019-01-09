@@ -3,18 +3,30 @@
 	    "id_usuario": 1,
 		"correo": "l.vargas02@ufromail.cl",
 		"contraseña": "123",
-		"rol": "empleador"
+		"nombre": "Pablo Escobar",
+		"rol": "empleador",
+		"region": "Araucanía",
+		"comuna": "Temuco",
+		"info_extra": "Distribuidor de materiales de construcción"
 	},
 	{
 	    "id_usuario": 2,
 		"correo": "m.reyes05@ufromail.cl",
 		"contraseña": "123",
-		"rol": "estudiante"
+		"nombre": "Pablo Reyes",
+		"rol": "estudiante",
+		"region": "Araucanía",
+		"comuna": "Temuco",
+		"info_extra": "Estudiante de Ingeniería Informática"
 	},
 	{
 	    "id_usuario": 3,
 		"correo": "s.suarez01@ufromail.cl",
 		"contraseña": "123",
-		"rol": "estudiante"
+		"nombre": "Javier Suarez",
+		"rol": "estudiante",
+		"region": "Araucanía",
+		"comuna": "Temuco",
+		"info_extra": "Estudiante de Ingeniería Informática"
 	}
 ]

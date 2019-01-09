@@ -19,15 +19,15 @@
   <ion-content padding>
 
 
-
-      <div class="list card">
+<div *ngFor="let item of information">
+      <div class="list card" *ngIf="item.id_usuario == id">
 
           <div class="item">
-            <div style="text-align:center">
+            <div style="text-align:center" ng>
               <div style="display:inline-block" ng-click="editarImagen()">
               <img src="https://images.vexels.com/media/users/3/140748/isolated/preview/5b078a59390bb4666df98b49f1cdedd0-perfil-avatar-masculino-by-vexels.png" class="custom-avatar" style="border-radius: 50%;width: 150px;height: 150px;">
               </div>
-                <h2 class="ng-binding">Nombre</h2><span class="font-size:10px;color:whitesmoke" ng-show="cliente.reputacion===0">
+                <h2 class="ng-binding">{{ item.nombre }}</h2><span class="font-size:10px;color:whitesmoke" ng-show="cliente.reputacion===0">
               Sin calificación
             </span>
               <span class="ion-android-star" style="color:darkgoldenrod;" ng-repeat="n in reputacionArr(cliente.reputacion)" ng-show="cliente.reputacion>0"></span>
@@ -45,12 +45,12 @@
             <label class="item item-input item-stacked-label">
               <span class="input-label">Región</span>
               <br>
-                        Araucanía
+                        {{item.region}}
             </label> <br>
             <label class="item item-input item-stacked-label">
               <span class="input-label">Comuna</span>
               <br>
-                        Cautín
+                       {{item.comuna}}
             </label>
               <br>
   
@@ -61,7 +61,7 @@
                   </ion-card-header>
                 
                   <ion-card-content>
-                      Empresa de Soluciones Informáticas con 10 años de trayectoria, enfocados en proyectos de tipo .....
+                      {{item.info_extra}}
                   </ion-card-content>
                 
                 </ion-card>
@@ -74,7 +74,7 @@
           </div>
         
         </div>
-
+      </div>
   
   </ion-content>
   
