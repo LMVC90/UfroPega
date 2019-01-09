@@ -36,7 +36,7 @@
       </div>
 
       <div padding>
-        <button ion-button block type="button" round>Recuperar Contraseña</button>
+        <button ion-button block type="button" (click)="forgot(userModel.email)" round>Recuperar Contraseña</button>
       </div>
     </ion-list>
   </form>

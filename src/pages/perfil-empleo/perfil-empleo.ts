@@ -16,10 +16,17 @@ import { RolProvider } from '../../providers/rol/rol';
 })
 export class PerfilEmpleoPage {
 
+<<<<<<< HEAD
   datos: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private _usu: RolProvider) {
    
+=======
+  public oferta;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.oferta = navParams.get("oferta");
+>>>>>>> 7a45130365baec6e71621ed70401c9ee43440efb
   }
 
   ionViewDidLoad() {
