@@ -6,13 +6,9 @@ import { UserModel } from '../../models/user-model';
 import { RolProvider } from '../../providers/rol/rol';
 import { PerfilEmpleadorPage } from '../perfil-empleador/perfil-empleador';
 import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
-<<<<<<< HEAD
 import { StartPage } from '../start/start';
 import { StartEmpleadorPage } from '../start-empleador/start-empleador';
-
-=======
 import * as firebase from 'firebase';
->>>>>>> 7a45130365baec6e71621ed70401c9ee43440efb
 
 
 /**

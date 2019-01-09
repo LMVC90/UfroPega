@@ -7,9 +7,6 @@ import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
 
 
-
-
-
 @Component({
   selector: 'page-lista-empleo',
   templateUrl: 'lista-empleo.html',
@@ -21,12 +18,7 @@ export class ListaEmpleoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http, private _auth: AuthService ) {
 
-<<<<<<< HEAD
-    
-
-=======
 /*
->>>>>>> 7a45130365baec6e71621ed70401c9ee43440efb
     this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
       this.ofertas = data;
       console.log(this.ofertas);
@@ -47,9 +39,8 @@ export class ListaEmpleoPage {
   
     }
 
-<<<<<<< HEAD
-    verPerfil(){
-      this.navCtrl.push(PerfilEmpleoPage);
+    verPerfil(oferta){
+      this.navCtrl.push(PerfilEmpleoPage, {oferta});
     }
 
     logOut(){
@@ -59,15 +50,10 @@ export class ListaEmpleoPage {
     }
 
 
-=======
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaEmpleoPage');
   }
-
-    verPerfil(oferta){
-      this.navCtrl.push(PerfilEmpleoPage, {oferta});
-    }
 
     toggleSection(i) {
       this.categorias[i].open = !this.categorias[i].open;
@@ -80,5 +66,4 @@ export class ListaEmpleoPage {
         }
       }
     }
->>>>>>> 7a45130365baec6e71621ed70401c9ee43440efb
 }
