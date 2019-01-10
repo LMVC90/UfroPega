@@ -21,18 +21,18 @@
   
 
     <div padding>
-        <ion-segment [(ngModel)]="pet">
-          <ion-segment-button value="kittens">
+        <ion-segment [(ngModel)]="pestanna">
+          <ion-segment-button value="aceptadas">
             Aceptadas
           </ion-segment-button>
-          <ion-segment-button value="puppies">
+          <ion-segment-button value="rechazadas">
             Rechazadas
           </ion-segment-button>
         </ion-segment>
       </div>
       
-      <div [ngSwitch]="pet">
-          <ion-list *ngSwitchCase="'puppies'">
+      <div [ngSwitch]="pestanna">
+          <ion-list *ngSwitchCase="'rechazadas'">
             <div *ngIf="(soli)">
             <ion-item-group *ngFor="let item of soli" no-padding>
                 <div *ngIf="item.origen==0">
@@ -49,7 +49,7 @@
           </div>
           </ion-list>
         
-          <ion-list *ngSwitchCase="'kittens'">
+          <ion-list *ngSwitchCase="'aceptadas'">
             <div *ngIf="(soli)">
             <ion-item-group *ngFor="let item of soli">
               <div *ngIf="item.origen==0">

@@ -43,7 +43,7 @@ import { CategoriaProvider } from '../providers/categoria/categoria';
 import { OfertaProvider } from '../providers/oferta/oferta';
 import { SolicitudProvider } from '../providers/solicitud/solicitud';
 import { NotificacionEmpPage } from '../pages/notificacion-emp/notificacion-emp';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 
@@ -104,7 +104,8 @@ import { NotificacionEmpPage } from '../pages/notificacion-emp/notificacion-emp'
     RolProvider,
     CategoriaProvider,
     OfertaProvider,
-    SolicitudProvider
+    SolicitudProvider,
+    LocalNotifications
   ]
 })
 export class AppModule {}

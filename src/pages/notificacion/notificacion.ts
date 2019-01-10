@@ -5,6 +5,7 @@ import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/mergeMapTo';
 import 'rxjs/add/operator/map';
 import { SolicitudProvider } from '../../providers/solicitud/solicitud';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 /**
@@ -31,7 +32,11 @@ export class NotificacionPage {
   firstAce:boolean;
   pestanna:any;
 
+<<<<<<< HEAD
   constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider) {
+=======
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider, private _locNot: LocalNotifications) {
+>>>>>>> 7054dc48d029e69399dffb845257f39e6e220a2d
     this.pestanna = "aceptadas";
     this.firstRec = false;
     this.firstAce = false;
@@ -57,7 +62,11 @@ export class NotificacionPage {
     .subscribe(data => {
       this.soli = data;
       console.table(data);
+<<<<<<< HEAD
     //  this.revisarCambios(this.revisarCantidadRechazadas(), this.revisarCantidadAceptadas());
+=======
+      this.revisarCambios(this.revisarCantidadRechazadas(), this.revisarCantidadAceptadas());
+>>>>>>> 7054dc48d029e69399dffb845257f39e6e220a2d
   });
   }
 
@@ -86,7 +95,11 @@ export class NotificacionPage {
     }
     return auxiliar;
   }
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 7054dc48d029e69399dffb845257f39e6e220a2d
   revisarCambios(cantidadRec: number, cantidadAce: number){
     if(this.rechazadas < cantidadRec && this.firstRec) {
       console.log("NUEVA PEGA RECHAZADA");
@@ -109,8 +122,16 @@ export class NotificacionPage {
         //data: { secret: key }
       });
     }
+<<<<<<< HEAD
     this.rechazadas = cantidadRec;
     this.firstAce = true;
   }
 */
 }
+=======
+    this.aceptadas = cantidadAce;
+    this.firstAce = true;
+  }
+
+}
+>>>>>>> 7054dc48d029e69399dffb845257f39e6e220a2d
