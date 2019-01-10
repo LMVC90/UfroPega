@@ -15,28 +15,27 @@
 
 <ion-content class="fondo" padding>
 
-    <ion-card>
+    <ion-card *ngIf="datos && usu">
 
         <ion-item>
           <ion-avatar item-start>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Pablo_Escobar_Mug.jpg/220px-Pablo_Escobar_Mug.jpg">
           </ion-avatar>
-          <h2>Pablo Escobar</h2>
-          <p>November 5, 1955</p>
+          <h2>{{usu.nombre}}</h2>
         </ion-item>
 
         <img src="https://img.milanuncios.com/fg/2761/85/276185904_1.jpg">
       
         <ion-card-content>
-          <h2><b>{{oferta.nombre}}</b></h2>
-          <p>{{oferta.comentario}}</p>
-          <p>Paga : {{oferta.monto}}</p>
-          <p>Cupos: {{oferta.cupos}}</p>
-          <p>{{oferta.ubicacion}}</p>
+          <h2><b>{{datos.nombre}}</b></h2>
+          <p>{{datos.comentario}}</p>
+          <p>Paga : {{datos.monto}}</p>
+          <p>Cupos: {{datos.cupos}}</p>
+          <p>{{datos.ubicacion}}</p>
         </ion-card-content>
       
       </ion-card>
 
-      <button ion-button block>Solicitar</button>
+      <button ion-button block (click)="solicitar(datos)">Solicitar</button>
 
 </ion-content>

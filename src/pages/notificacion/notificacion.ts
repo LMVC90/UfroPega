@@ -25,8 +25,16 @@ export class NotificacionPage {
   soli:any[];
   userId:any;
   info:any;
+  rechazadas:number;
+  aceptadas:number;
+  firstRec:boolean;
+  firstAce:boolean;
+  pestanna:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider) {
+    this.pestanna = "aceptadas";
+    this.firstRec = false;
+    this.firstAce = false;
     this._sol.query().subscribe(Response =>{
       this.soli= Response;
       console.log(Response);
@@ -40,6 +48,8 @@ export class NotificacionPage {
   }
 
   private getNotificacion()  {   // async
+
+    this.rechazadas = 0;
     return Observable
     .interval(5000)
     .mergeMapTo(this.fetchNotificacion())
@@ -47,6 +57,7 @@ export class NotificacionPage {
     .subscribe(data => {
       this.soli = data;
       console.table(data);
+    //  this.revisarCambios(this.revisarCantidadRechazadas(), this.revisarCantidadAceptadas());
   });
   }
 
@@ -54,4 +65,52 @@ export class NotificacionPage {
     return this._sol.query();
   }
 
+  revisarCantidadRechazadas(){
+    var auxiliar = 0;
+    for(var i = 0; i < this.soli.length; i++) {
+      if(this.soli[i].id_estudiante == this.userId && this.soli[i].estado == 0 && this.soli[i].origen == 0){
+        auxiliar++;
+        console.log("rechazadas: " + this.rechazadas);
+      }
+    }
+    return auxiliar;
+  }
+
+  revisarCantidadAceptadas(){
+    var auxiliar = 0;
+    for(var i = 0; i < this.soli.length; i++) {
+      if(this.soli[i].id_estudiante == this.userId && this.soli[i].estado == 1 && this.soli[i].origen == 0){
+        auxiliar++;
+        console.log("aceptadas: " + this.aceptadas);
+      }
+    }
+    return auxiliar;
+  }
+/*
+  revisarCambios(cantidadRec: number, cantidadAce: number){
+    if(this.rechazadas < cantidadRec && this.firstRec) {
+      console.log("NUEVA PEGA RECHAZADA");
+      this._locNot.schedule({
+        id: 1,
+        text: 'NUEVA PEGA RECHAZADA'
+        //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+        //data: { secret: key }
+      });
+    }
+    this.rechazadas = cantidadRec;
+    this.firstRec = true;
+
+    if(this.aceptadas < cantidadAce && this.firstAce) {
+      console.log("NUEVA PEGA ACEPTADA");
+      this._locNot.schedule({
+        id: 1,
+        text: 'NUEVA PEGA ACEPTADA'
+        //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+        //data: { secret: key }
+      });
+    }
+    this.rechazadas = cantidadRec;
+    this.firstAce = true;
+  }
+*/
 }

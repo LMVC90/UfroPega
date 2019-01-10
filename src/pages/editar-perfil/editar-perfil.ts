@@ -37,6 +37,7 @@ export class EditarPerfilPage {
     console.log('Updateando');
     console.log(this.id_user);
     console.log(item);
+
     this._rol.update(item).subscribe(Response=>{
 
       if(item.rol == "empleador"){
@@ -46,7 +47,8 @@ export class EditarPerfilPage {
         this.navCtrl.push(PerfilEstudiantePage);
       }
     });
-    
   }
+
+  
 
 }
