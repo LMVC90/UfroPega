@@ -110,7 +110,7 @@ export class NotificacionPage {
         //data: { secret: key }
       });
     }
-    this.rechazadas = cantidadRec;
+    this.aceptadas = cantidadAce;
     this.firstAce = true;
   }
 
