@@ -5,7 +5,7 @@ import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/mergeMapTo';
 import 'rxjs/add/operator/map';
 import { SolicitudProvider } from '../../providers/solicitud/solicitud';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 /**
@@ -32,7 +32,7 @@ export class NotificacionPage {
   firstAce:boolean;
   pestanna:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider, private _locNot: LocalNotifications) {
     this.pestanna = "aceptadas";
     this.firstRec = false;
     this.firstAce = false;
@@ -91,12 +91,24 @@ export class NotificacionPage {
   revisarCambios(cantidadRec: number, cantidadAce: number){
     if(this.rechazadas < cantidadRec && this.firstRec) {
       console.log("NUEVA PEGA RECHAZADA");
+      this._locNot.schedule({
+        id: 1,
+        text: 'NUEVA PEGA RECHAZADA'
+        //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+        //data: { secret: key }
+      });
     }
     this.rechazadas = cantidadRec;
     this.firstRec = true;
 
     if(this.aceptadas < cantidadAce && this.firstAce) {
       console.log("NUEVA PEGA ACEPTADA");
+      this._locNot.schedule({
+        id: 1,
+        text: 'NUEVA PEGA ACEPTADA'
+        //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+        //data: { secret: key }
+      });
     }
     this.rechazadas = cantidadRec;
     this.firstAce = true;
