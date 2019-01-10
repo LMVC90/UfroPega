@@ -2,21 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,LoadingController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { UserModel } from '../../models/user-model';
-//import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
 import { RolProvider } from '../../providers/rol/rol';
-import { PerfilEmpleadorPage } from '../perfil-empleador/perfil-empleador';
-import { ListaEmpleoPage } from '../lista-empleo/lista-empleo';
 import { StartPage } from '../start/start';
 import { StartEmpleadorPage } from '../start-empleador/start-empleador';
 import * as firebase from 'firebase';
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 
 @Component({
@@ -28,6 +17,9 @@ export class LoginPage {
 
 //login data
   loginData = {};
+  info:any[];
+  rol: any;
+  id: any;
 
  constructor(
    public navCtrl: NavController, 
@@ -36,8 +28,15 @@ export class LoginPage {
    public alertCtrl: AlertController,
    public authService: AuthService,
    private _rol: RolProvider) {
+     
    this.userModel = new UserModel();
-   //this._rol.cleanRol();
+   this._rol.query().subscribe(
+    Response => {
+        this.info = Response;
+        console.log(this.info);
+  });
+  this.rol='';
+  this.id='';
  }
   
 
@@ -68,10 +67,6 @@ this.authService.signInWithEmailAndPassword(this.userModel).then(result => {
     this.alert('Ups!', 'Usuario o Contraseña incorrectos');
 });
 
-  //this.navCtrl.push(ListaEmpleoPage);}
- 
-  //this.navCtrl.setRoot(ListaEmpleoPage);
-
   
 }
 alert(title: string, message: string) {
@@ -84,13 +79,32 @@ alert(title: string, message: string) {
 }
 
 
-//
+// segun el rol navega a un toolbar
 verifRol(){
-  if(this._rol.getRol() == 'empleador'){
+  if(this.getRol() == 'empleador'){
       this.navCtrl.setRoot(StartEmpleadorPage);
   }else{
     this.navCtrl.setRoot(StartPage);
   }
+}
+
+getRol(): any{   //recorrer lista de usuarios para obtener rol de usuario actual
+  if(this.info){ 
+  this.info.forEach(element => {
+    console.log(element); // ---------------
+      if (element.correo == localStorage.getItem('email')) {
+        this.id = element.id_usuario;
+        localStorage.setItem("id",this.id);
+        this.rol = element.rol  
+        console.log(this.rol);        
+      }
+    });
+    console.log(this.rol);
+  return this.rol
+}
+}
+cleanRol(){
+this.rol ='';
 }
 
 

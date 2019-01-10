@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Http} from '@angular/http';
 import { PerfilEmpleadorPage } from '../perfil-empleador/perfil-empleador';
 import { PerfilEstudiantePage } from '../perfil-estudiante/perfil-estudiante';
+import { RolProvider } from '../../providers/rol/rol';
 
 /**
  * Generated class for the EditarPerfilPage page.
@@ -18,14 +19,13 @@ import { PerfilEstudiantePage } from '../perfil-estudiante/perfil-estudiante';
 })
 export class EditarPerfilPage {
 
-  information: any;
+  info: any;
   id_user: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _http:Http) {
-    this.id_user = navParams.get("id_usuario");
-    this._http.get('http://10.10.11.44:83/api/usuario/').map(res => res.json()).subscribe(data => {
-      console.log(data);
-      this.information = data;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _http:Http,private _rol:RolProvider) {
+    this.id_user = parseInt(localStorage.getItem("id"));
+    this._rol.get(this.id_user).subscribe(Response=>{
+      this.info=Response;
     });
   }
 
@@ -37,13 +37,16 @@ export class EditarPerfilPage {
     console.log('Updateando');
     console.log(this.id_user);
     console.log(item);
-    this._http.put('http://10.10.11.44:83/api/usuario/' + this.id_user, item);
-    if(item.rol == "empleador"){
-      this.navCtrl.push(PerfilEmpleadorPage);
-    }
-    else{
-      this.navCtrl.push(PerfilEstudiantePage);
-    }
+    this._rol.update(item).subscribe(Response=>{
+
+      if(item.rol == "empleador"){
+        this.navCtrl.push(PerfilEmpleadorPage);
+      }
+      else{
+        this.navCtrl.push(PerfilEstudiantePage);
+      }
+    });
+    
   }
 
 }

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/mergeMapTo';
 import 'rxjs/add/operator/map';
+import { SolicitudProvider } from '../../providers/solicitud/solicitud';
+
 
 /**
  * Generated class for the NotificacionPage page.
@@ -21,10 +23,15 @@ import 'rxjs/add/operator/map';
 export class NotificacionPage {
 
   data:any;
-
+  soli:any[];
   info:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private _sol:SolicitudProvider) {
+    this._sol.query().subscribe(Response =>{
+      this.soli= Response;
+      console.log(Response);
+    });
+    
     this.getNotificacion();
   }
 
@@ -37,16 +44,15 @@ export class NotificacionPage {
      Observable
     .interval(10000)
     .mergeMapTo(this.fetchNotificacion())
-    .map(res => res.json())
+    .map(res => res)
     .subscribe(data => {
-      this.info = data;
-      //console.log(data);
+      this.soli = data;
       console.table(data);
   });
   }
 
   private fetchNotificacion() {
-    return this.http.get('https://sheetsu.com/apis/v1.0bu/b22af3c25ea7/sheets/solicitudes');
+    return this._sol.query();
   }
 
 }

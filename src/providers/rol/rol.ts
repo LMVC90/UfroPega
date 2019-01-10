@@ -1,54 +1,45 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Http} from '@angular/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../auth-service';
 import { auth } from 'firebase';
 import { GLOBAL } from '../Global';
+import { Usuario } from '../../model/usuario';
 
 
-
-/*
-  Generated class for the RolProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class RolProvider {
 
-  information: any[];
-  rol: any;
-  id: any;
-
-  constructor(public http: HttpClient, private _http: Http, private _auth: AuthService) {
-    this._http.get(GLOBAL.url +'usuario').map(res => res.json()).subscribe(data => {
-      this.information = data;
-      console.log(data);
-  });
-    this.rol='';
-    this.id='';
+  constructor(public _http: HttpClient) {
+    
   }
 
-
-  getRol(): any{   //recorrer lista de usuarios para obtener rol de usuario actual
-    if(this.information){ 
-    this.information.forEach(element => {
-        if (element.correo == localStorage.getItem('email')) {
-          this.id = element.id_usuario;
-          localStorage.setItem("id",this.id);
-          this.rol = element.rol  
-          console.log(this.rol);        
-        }
-      });
-      console.log(this.rol);
-    return this.rol
-  }
+public getID(usuario: Usuario | number): number {
+  return usuario instanceof Usuario ? usuario.id_usuario : usuario;
 }
 
+public save(usuario: Usuario): Observable<any> {
+  return this._http.post(GLOBAL.url + 'usuario', Usuario.getJSON(usuario));
+}
 
-cleanRol(){
-  this.rol ='';
+public update(usuario: Usuario): Observable<any> {
+  return this._http.put(GLOBAL.url + 'usuario/' + usuario.id_usuario, Usuario.getJSON(usuario));
+}
+
+public query(): Observable<Usuario[]> {
+  return this._http.get<Usuario[]>(GLOBAL.url + 'usuario')
+      .pipe(map(usuarios => usuarios.map(usuario => new Usuario(usuario))));
+}
+
+public get(id: number): Observable<Usuario> {
+  return this._http.get<Usuario>(GLOBAL.url + 'usuario/' + id)
+      .pipe(map(usuario => new Usuario(usuario)));
+}
+
+public delete(usuario: Usuario | number): Observable<any> {
+  return this._http.delete(GLOBAL.url + 'usuario/' + this.getID(usuario));
 }
 
 }

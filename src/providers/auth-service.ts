@@ -10,8 +10,9 @@ export class AuthService {
     constructor(public angularFireAuth: AngularFireAuth) {
         angularFireAuth.authState.subscribe((user: User) => {
             this.user = user;
+            console.log(this.user);
         });
-        console.log(this.user);
+        
     }
 
     get authenticated(): boolean {

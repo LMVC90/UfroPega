@@ -16,7 +16,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="fondo" padding>
 
   
 
@@ -33,15 +33,15 @@
       
       <div [ngSwitch]="pet">
         <ion-list *ngSwitchCase="'puppies'">
-          <div *ngIf="(info | async)">
-          <ion-item *ngFor="let item of info | async">
+          <!--<div *ngIf="(soli | async)">-->
+          <ion-item *ngFor="let item of soli | async">
             <ion-thumbnail item-start>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Pablo_Escobar_Mug.jpg/220px-Pablo_Escobar_Mug.jpg">
             </ion-thumbnail>
             <h2>item.id_oferta</h2>
           </ion-item>
           ...
-        </div>
+        <!--</div>-->
         </ion-list>
       
         <ion-list *ngSwitchCase="'kittens'">

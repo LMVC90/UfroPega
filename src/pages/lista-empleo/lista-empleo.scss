@@ -1,6 +1,14 @@
 page-lista-empleo {
 
-    
+    .fondo{
+        background-color: powderblue;
+    }
+    .toolbar-background {
+        background: rgb(0, 57, 108);
+    }
+    .toolbar-title{
+        color: white;
+      }
         .accordion-list {
             background: color($colors, light);
             height: 100%;

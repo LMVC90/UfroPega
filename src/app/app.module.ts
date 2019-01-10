@@ -37,6 +37,11 @@ import { AuthService } from '../providers/auth-service';
 import { StartPage } from '../pages/start/start';
 import { StartEmpleadorPage } from '../pages/start-empleador/start-empleador';
 import { ListaServicioPage } from '../pages/lista-servicio/lista-servicio';
+import { HttpClientModule } from '@angular/common/http';
+import { RolProvider } from '../providers/rol/rol';
+import { CategoriaProvider } from '../providers/categoria/categoria';
+import { OfertaProvider } from '../providers/oferta/oferta';
+import { SolicitudProvider } from '../providers/solicitud/solicitud';
 
 
 
@@ -92,7 +97,10 @@ import { ListaServicioPage } from '../pages/lista-servicio/lista-servicio';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    RolProvider
+    RolProvider,
+    CategoriaProvider,
+    OfertaProvider,
+    SolicitudProvider
   ]
 })
 export class AppModule {}

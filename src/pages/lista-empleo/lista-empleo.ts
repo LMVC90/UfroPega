@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import 'rxjs/add/operator/map';
-import {Http} from '@angular/http';
 import { PerfilEmpleoPage } from '../perfil-empleo/perfil-empleo';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
-import { GLOBAL } from '../../providers/Global';
+import { CategoriaProvider } from '../../providers/categoria/categoria';
+import { OfertaProvider } from '../../providers/oferta/oferta';
 
 
 @Component({
@@ -17,27 +16,16 @@ export class ListaEmpleoPage {
   ofertas: any[];
   categorias: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _http: Http, private _auth: AuthService ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _auth: AuthService, private _cat: CategoriaProvider,private _ofe:OfertaProvider ) {
 
-/*
-    this._http.get('../../assets/Oferta.json').map(res => res.json()).subscribe(data => {
-      this.ofertas = data;
-      console.log(this.ofertas);
+    this._cat.query().subscribe(Response=>{
+      this.categorias=Response;
+      console.log(Response);
     });
-    this._http.get('../../assets/Categorias.json').map(res => res.json()).subscribe(data => {
-      this.categorias = data;
-      console.log(this.categorias);
+    this._ofe.query().subscribe(Response=>{
+      this.ofertas=Response;
+      console.log(Response);
     });
-*/
-    this._http.get(GLOBAL.url+'oferta').map(res => res.json()).subscribe(data => {
-      this.ofertas = data;
-      console.log(this.ofertas);
-    });
-    this._http.get(GLOBAL.url+'categoria').map(res => res.json()).subscribe(data => {
-      this.categorias = data;
-      console.log(this.categorias);
-    });
-  
     }
 
     verPerfil(oferta){

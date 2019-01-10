@@ -1,36 +1,40 @@
 <ion-header>
 
-  <ion-navbar>
-      <!-- <button ion-button menuToggle icon-only>
+    <ion-navbar>
+        <!-- <button ion-button menuToggle icon-only>
           <ion-icon name='menu'></ion-icon>
         </button>  -->
         <button (click)="logOut()">
-          <ion-icon name='power'></ion-icon>
+            <ion-icon name='power'></ion-icon>
         </button>
 
-    <ion-title>Lista de Empleos</ion-title>
-  </ion-navbar>
+        <ion-title>Lista de Empleos</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="fondo" padding>
     <ion-list class="accordion-list">
 
 
-  
-    <ion-item-group *ngFor="let info of categorias; let i = index">
-        <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}" color="#911">Categoría: {{ info.nombre_cat }}
-            <ion-icon item-left name="arrow-dropright" *ngIf="!info.open"></ion-icon>
-            <ion-icon item-left name="arrow-dropdown" *ngIf="info.open"></ion-icon>
-        </ion-item-divider>
-        
-      <ion-list *ngIf="info.open" no-lines>
-          <ion-item-group *ngFor="let oferta of ofertas; let j = index" no-padding>
-              <ion-item *ngIf="oferta.Categoria == info.id_categoria" (click)="verPerfil(oferta)" style="border-bottom: 1px solid #222;">{{ oferta.Nombre }}</ion-item>
-          </ion-item-group>
-      </ion-list>
-    </ion-item-group>
+
+        <ion-item-group *ngFor="let info of categorias; let i = index">
+            <ion-item-divider ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': info.open, 'section': !info.open}"
+                color="#911">Categoría: {{ info.nombre_cat }}
+                <ion-icon item-left name="arrow-dropright" *ngIf="!info.open"></ion-icon>
+                <ion-icon item-left name="arrow-dropdown" *ngIf="info.open"></ion-icon>
+            </ion-item-divider>
+
+            <div *ngIf="ofertas">
+                <ion-list *ngIf="info.open" no-lines>
+                    <ion-item-group *ngFor="let oferta of ofertas; let j = index" no-padding>
+                        <ion-item *ngIf="oferta.Categoria == info.id_categoria" (click)="verPerfil(oferta)" style="border-bottom: 1px solid #222;">{{
+                            oferta.Nombre }}</ion-item>
+                    </ion-item-group>
+                </ion-list>
+            </div>
+        </ion-item-group>
     </ion-list>
 
 

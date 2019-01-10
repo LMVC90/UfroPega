@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, App } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
+import { OfertaProvider } from '../../providers/oferta/oferta';
 
 
 /**
@@ -17,7 +18,15 @@ import { LoginPage } from '../login/login';
 })
 export class ListaServicioPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthService,private _app: App) {
+ofertas:any[];
+id:any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthService,private _app: App,private _ofe:OfertaProvider) {
+    this.id=localStorage.getItem("id");
+    this._ofe.query().subscribe(Response=>{
+      this.ofertas=Response;
+      console.log(Response);
+    });
   }
 
   ionViewDidLoad() {

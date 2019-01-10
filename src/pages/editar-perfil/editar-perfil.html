@@ -13,9 +13,9 @@
 </ion-header>
 
 
-<ion-content padding>
-    <div *ngFor="let item of information">
-        <div class="list card" *ngIf="item.id_usuario == id_user">
+<ion-content class="fondo" padding>
+    <div *ngIf="info">
+        <div class="list card">
   
             <div class="item">
               <div style="text-align:center" ng>
@@ -24,7 +24,7 @@
                 </div>
                 <ion-item class="ng-binding">
                     <ion-label color="primary">Nombre</ion-label>
-                    <ion-input [(ngModel)]= "item.nombre" name="{{item.nombre}}" placeholder="{{item.nombre}}"></ion-input>
+                    <ion-input [(ngModel)]= "info.nombre" name="{{info.nombre}}" placeholder="{{info.nombre}}"></ion-input>
                 </ion-item>
                 <span class="ion-android-star" style="color:darkgoldenrod;" ng-repeat="n in reputacionArr(cliente.reputacion)" ng-show="cliente.reputacion>0"></span>
               </div>
@@ -34,11 +34,11 @@
             <div class="item item-body">
                 <ion-item class="ng-binding">
                   <ion-label color="primary">Region</ion-label>
-                  <ion-input [(ngModel)]= "item.region" name="{{item.region}}" placeholder="{{item.region}}"></ion-input>
+                  <ion-input [(ngModel)]= "info.region" name="{{info.region}}" placeholder="{{info.region}}"></ion-input>
                 </ion-item>
                 <ion-item class="ng-binding">
                   <ion-label color="primary">Comuna</ion-label>
-                  <ion-input [(ngModel)]= "item.comuna" name="{{item.comuna}}" placeholder="{{item.comuna}}"></ion-input>
+                  <ion-input [(ngModel)]= "info.comuna" name="{{info.comuna}}" placeholder="{{info.comuna}}"></ion-input>
                 </ion-item>
                 <br>
     
@@ -49,14 +49,14 @@
                     </ion-card-header>
                   
                     <ion-card-content>
-                        <ion-textarea [(ngModel)]= "item.info_extra" name="{{item.info_extra}}" placeholder="{{item.info_extra}}"></ion-textarea>
+                        <ion-textarea [(ngModel)]= "info.info_extra" name="{{info.info_extra}}" placeholder="{{info.info_extra}}"></ion-textarea>
                     </ion-card-content>
                   
                   </ion-card>
                       <br>
     
                 <label style="padding-top:15px">
-                  <button (click)="updatePerfil(item)" ion-button full style="border: 0;border-radius: 45px;color: blue"><p style="color: white">Guardar</p></button> <!--ng-click="irEditarPerfilEmple()-->
+                  <button (click)="updatePerfil(info)" ion-button full style="border: 0;border-radius: 45px;color: blue"><p style="color: white">Guardar</p></button> <!--ng-click="irEditarPerfilEmple()-->
                 </label>
              
             </div>
