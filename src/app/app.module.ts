@@ -30,6 +30,8 @@ import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario'
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';	
+import { RolProvider } from '../providers/rol/rol';
 
 // Para el inicio de sesion
 
