@@ -45,13 +45,16 @@
         </ion-list>
       
         <ion-list *ngSwitchCase="'kittens'">
-          <ion-item>
+          <div *ngIf="(info)">
+          <ion-item-group *ngFor="let item of info">
+            <ion-item *ngIf="item.id_estudiante == 2 && item.estado == 1">
             <ion-thumbnail item-start>
-              <img src="https://www.marthadebayle.com/wp-content/uploads/2016/01/chapo.jpg">
+              <img (click)="clickTest(item)" src="https://www.marthadebayle.com/wp-content/uploads/2016/01/chapo.jpg">
             </ion-thumbnail>
-            <h2>Consultoría</h2>
-          </ion-item>
-          ...
+            <h2>{{item.oferta_id}}</h2>
+            </ion-item>
+          </ion-item-group>
+        </div>
         </ion-list>
       </div>
 

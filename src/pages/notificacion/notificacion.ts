@@ -24,6 +24,7 @@ export class NotificacionPage {
 
   data:any;
   soli:any[];
+  userId:any;
   info:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private _sol:SolicitudProvider) {
@@ -33,16 +34,43 @@ export class NotificacionPage {
     });
     
     this.getNotificacion();
+    this.userId=localStorage.getItem("id");
+    console.log("User Id: "+this.userId);
+    //this.getNotList();
+  }
+
+  clickTest(item) {
+    console.log(item);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificacionPage');
   }
 
+  getNotList(): Observable<any[]> {
+    console.log("OBS");
+    console.log(this.fetchNotificacion().pipe(map(response => response.json())));
+    return this.fetchNotificacion().pipe(map(response => response.json()));
+  }
 
-  private getNotificacion() {   // async
-     Observable
-    .interval(10000)
+  getNot() {
+    return this.http.get('https://sheetsu.com/apis/v1.0bu/e074a3875116/sheets/solicitudes')
+    .map(res => res.json())
+    .catch(this.catchError)
+    .subscribe(
+      resultado => this.info = resultado,
+      error => console.log(error)
+    )
+  }
+
+  private catchError(error: Response | any) {
+      console.log(error);
+      return Observable.throw(error.json().error || "Serve error");
+  }
+
+  private getNotificacion()  {   // async
+    return Observable
+    .interval(5000)
     .mergeMapTo(this.fetchNotificacion())
     .map(res => res)
     .subscribe(data => {
