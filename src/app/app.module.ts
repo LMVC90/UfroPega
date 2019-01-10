@@ -30,8 +30,6 @@ import { RegistroUsuarioPage } from '../pages/registro-usuario/registro-usuario'
 import { PerfilEmpleoPage } from '../pages/perfil-empleo/perfil-empleo';
 import { NotificacionPage } from '../pages/notificacion/notificacion';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';	
-import { RolProvider } from '../providers/rol/rol';
 
 // Para el inicio de sesion
 
@@ -44,6 +42,8 @@ import { RolProvider } from '../providers/rol/rol';
 import { CategoriaProvider } from '../providers/categoria/categoria';
 import { OfertaProvider } from '../providers/oferta/oferta';
 import { SolicitudProvider } from '../providers/solicitud/solicitud';
+import { NotificacionEmpPage } from '../pages/notificacion-emp/notificacion-emp';
+
 
 
 
@@ -65,7 +65,8 @@ import { SolicitudProvider } from '../providers/solicitud/solicitud';
     NotificacionPage,
     StartPage,
     StartEmpleadorPage,
-    ListaServicioPage
+    ListaServicioPage,
+    NotificacionEmpPage
 
   ],
   imports: [
@@ -91,7 +92,8 @@ import { SolicitudProvider } from '../providers/solicitud/solicitud';
     NotificacionPage,
     StartPage,
     StartEmpleadorPage,
-    ListaServicioPage
+    ListaServicioPage,
+    NotificacionEmpPage
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { PerfilEmpleadorPage } from '../perfil-empleador/perfil-empleador';
-import { NotificacionPage } from '../notificacion/notificacion';
 import { ListaServicioPage } from '../lista-servicio/lista-servicio';
+import { NotificacionEmpPage } from '../notificacion-emp/notificacion-emp';
+
 
 /**
  * Generated class for the StartEmpleadorPage page.
@@ -17,7 +18,7 @@ export class StartEmpleadorPage {
   
   tab1=ListaServicioPage;
   tab2=PerfilEmpleadorPage;
-  tab3=NotificacionPage;
+  tab3=NotificacionEmpPage;
 
   constructor() {
   }

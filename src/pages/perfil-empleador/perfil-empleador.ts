@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RolProvider } from '../../providers/rol/rol';
+import { EditarPerfilPage } from '../editar-perfil/editar-perfil';
 
 
 @Component({
@@ -24,5 +25,7 @@ export class PerfilEmpleadorPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilEmpleadorPage');
   }
-
+  editarPerfil() {
+    this.navCtrl.push(EditarPerfilPage);
+  }
 }

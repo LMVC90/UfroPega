@@ -7,19 +7,11 @@ import 'rxjs/add/operator/map';
 import { SolicitudProvider } from '../../providers/solicitud/solicitud';
 
 
-/**
- * Generated class for the NotificacionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-
 @Component({
-  selector: 'page-notificacion',
-  templateUrl: 'notificacion.html',
+  selector: 'page-notificacion-emp',
+  templateUrl: 'notificacion-emp.html',
 })
-export class NotificacionPage {
+export class NotificacionEmpPage {
 
   data:any;
   soli:any[];
@@ -53,5 +45,4 @@ export class NotificacionPage {
   private fetchNotificacion() {
     return this._sol.query();
   }
-
 }
