@@ -28,12 +28,14 @@ export class NotificacionPage {
   info:any;
   rechazadas:number;
   aceptadas:number;
-  pasaRec:boolean;
-  pasaAce:boolean;
+  firstRec:boolean;
+  firstAce:boolean;
+  pestanna:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private _sol:SolicitudProvider) {
-    this.pasaRec = false;
-    this.pasaAce = false;
+    this.pestanna = "aceptadas";
+    this.firstRec = false;
+    this.firstAce = false;
     this._sol.query().subscribe(Response =>{
       this.soli= Response;
       console.log(Response);
@@ -87,17 +89,17 @@ export class NotificacionPage {
   }
 
   revisarCambios(cantidadRec: number, cantidadAce: number){
-    if(this.rechazadas < cantidadRec && this.pasaRec) {
+    if(this.rechazadas < cantidadRec && this.firstRec) {
       console.log("NUEVA PEGA RECHAZADA");
     }
     this.rechazadas = cantidadRec;
-    this.pasaRec = true;
+    this.firstRec = true;
 
-    if(this.aceptadas < cantidadAce && this.pasaAce) {
+    if(this.aceptadas < cantidadAce && this.firstAce) {
       console.log("NUEVA PEGA ACEPTADA");
     }
     this.rechazadas = cantidadRec;
-    this.pasaRec = true;
+    this.firstAce = true;
   }
 
 }
